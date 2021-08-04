@@ -11,7 +11,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Fast Feedback
         </h1>
 
         <p className={styles.description}>
@@ -33,6 +33,7 @@ export default function Home() {
           <a
             href="https://github.com/vercel/next.js/tree/master/examples"
             className={styles.card}
+            
           >
             <h3>Examples &rarr;</h3>
             <p>Discover and deploy boilerplate example Next.js projects.</p>
