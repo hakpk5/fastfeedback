@@ -1,29 +1,30 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { useAuth } from "../lib/auth";
-export default function Home() {
+import { useAuth } from "@/lib/auth";
+import { Button, Heading, Code, Text } from "@chakra-ui/react";
+import { Logo } from "@/styles/theme";
+export const Home = () => {
   const auth = useAuth();
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Fast Feedback</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>Fast Feedback</h1>
-        <br /> <br />
-        <button onClick={(e) => auth.signinWithGithub()}>Sign In</button>
+      <main>
+        <Heading>Fast Feedback</Heading>
+        <Logo color="black" w="100px" h="64px" />
+        {!auth?.user && (
+          <Button onClick={(e) => auth.signinWithGithub()}>Sign In</Button>
+        )}
         {/* Optional chaining to safely access nested properties*/}
-        <div>{auth?.user?.email}</div>
+        <Text>
+          Current User: <Code> {auth?.user?.email}</Code>
+        </Text>
         {auth?.user && (
-          <button onClick={(e) => auth.signout()}>Sign Out</button>
+          <Button onClick={(e) => auth.signout()}>Sign Out</Button>
         )}
       </main>
-
-      <footer className={styles.footer}>
-        <a href="#">{" Built with 💖 using ReactJS"}</a>
-      </footer>
     </div>
   );
-}
+};
+
+export { Home as default };
